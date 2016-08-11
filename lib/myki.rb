@@ -15,6 +15,7 @@ class Myki
       'account' => 'Registered/MyMykiAccount.aspx?menu=My+myki+account',
       'login'   => 'Login.aspx'
     }
+    @cards = []
 
     _login()
   end
