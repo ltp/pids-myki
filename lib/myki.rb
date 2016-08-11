@@ -36,16 +36,32 @@ class Myki
                         }
 	)
 
-    puts "=== page ==="
-    pp page
-    puts "\n"
+    cards = page.css('#ctl00_uxContentPlaceHolder_uxMyCards td')
+    cards_l = page.css('#ctl00_uxContentPlaceHolder_uxMyCards a')
 
-    puts "=== body ==="
-    puts page.body
-    puts "\n"
+    i = 0
+    for j in (0..((cards.length / 4) - 1))
+      id = cards[i].text.strip
+      puts cards[i].keys
+      link = cards_l[j]['href']
+      holder = cards[i+1].text.strip
+      money = cards[i+2].text.strip
+      pass = cards[i+3].text.strip
+      puts "id #{id} - link #{link} - holder #{holder} - money #{money} - pass #{pass}"
+      i+=4
+    end
 
-    puts "=== done ==="
+#    puts "=== page ==="
+#    pp page
+#    puts "\n"
+
+#    puts "=== body ==="
+#    puts page.body
+#    puts "\n"
+
+#    puts "=== done ==="
 
   end
 
 end
+
