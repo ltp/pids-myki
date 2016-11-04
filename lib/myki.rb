@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'mechanize'
 require 'open-uri'
+require 'myki/card'
 
 class Myki
   attr_accessor :username,
@@ -43,25 +44,20 @@ class Myki
     i = 0
     for j in (0..((cards.length / 4) - 1))
       id = cards[i].text.strip
-      puts cards[i].keys
       link = cards_l[j]['href']
       holder = cards[i+1].text.strip
       money = cards[i+2].text.strip
       pass = cards[i+3].text.strip
-      puts "id #{id} - link #{link} - holder #{holder} - money #{money} - pass #{pass}"
+
+      @cards.push( Myki::Card.new( id: id, link: link, holder: holder, money: money, pass: pass ) )
+
       i+=4
     end
 
-#    puts "=== page ==="
-#    pp page
-#    puts "\n"
+  end
 
-#    puts "=== body ==="
-#    puts page.body
-#    puts "\n"
-
-#    puts "=== done ==="
-
+  def cards
+    @cards
   end
 
 end
