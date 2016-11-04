@@ -49,7 +49,7 @@ class Myki
       money = cards[i+2].text.strip
       pass = cards[i+3].text.strip
 
-      @cards.push( Myki::Card.new( id: id, link: link, holder: holder, money: money, pass: pass ) )
+      @cards.push( Myki::Card.new( id: id, link: link, holder: holder, money: money, pass: pass, agent: @agent ) )
 
       i+=4
     end
