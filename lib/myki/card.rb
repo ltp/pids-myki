@@ -1,5 +1,7 @@
 class Card
 
+  attr_reader :id, :link, :holder, :money, :pass
+
   def initialize( params = {} )
     @id = params[:id]
     @link = params[:link]
